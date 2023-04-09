@@ -2,7 +2,7 @@
 // Author: Leon Ding <ding@ibyte.me>
 // Date: 2022/2/27 - 3:58 PM - UTC/GMT+08:00
 
-package bottle
+package tunadb
 
 // Hashed is responsible for generating unsigned, 64-bit hash of provided string. Harsher should minimize collisions
 // (generating same hash for different strings) and while performance is also important fast functions are preferable (i.e.

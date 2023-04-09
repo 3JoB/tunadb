@@ -1,14 +1,17 @@
-module github.com/auula/bottle
+module github.com/3JoB/tunadb
 
 go 1.20
 
 require (
+	github.com/3JoB/mgo v1.0.0
 	github.com/spf13/viper v1.15.0
 	github.com/stretchr/testify v1.8.2
-	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
 )
 
 require (
+	github.com/3JoB/go-json v0.10.2 // indirect
+	github.com/3JoB/go-reflect v1.0.0 // indirect
+	github.com/3JoB/unsafeConvert v1.3.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect

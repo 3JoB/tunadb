@@ -9,18 +9,18 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/auula/bottle"
+	"github.com/3JoB/tunadb"
 )
 
 func init() {
-	if err := bottle.Load("./config.yaml"); err != nil {
+	if err := tunadb.Load("./config.yaml"); err != nil {
 		fmt.Println(err)
 	}
-	bottle.SetIndexSize(100000)
+	tunadb.SetIndexSize(100000)
 }
 
 func main() {
-	defer bottle.Close()
+	defer tunadb.Close()
 
 	wg := new(sync.WaitGroup)
 
@@ -31,7 +31,7 @@ func main() {
 			for j := 0; j < 1000; j++ {
 				k := strconv.Itoa(m*1000 + j)
 				v := strconv.Itoa(m*1000 + j)
-				if err := bottle.Put([]byte(k), []byte(v)); err != nil {
+				if err := tunadb.Put([]byte(k), []byte(v)); err != nil {
 					fmt.Println(err, k, v)
 				}
 			}
@@ -45,7 +45,7 @@ func main() {
 			for j := 0; j < 1000; j++ {
 				k := strconv.Itoa(m*1000 + j)
 				v := strconv.Itoa(m*1000 + j)
-				d := bottle.Get([]byte(k))
+				d := tunadb.Get([]byte(k))
 				if d.Err != nil {
 					fmt.Println("Get:", d.Err, k, v)
 				} else if string(d.Value) != v {

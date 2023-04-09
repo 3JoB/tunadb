@@ -10,22 +10,22 @@ package main
 import (
 	"fmt"
 
-	"github.com/auula/bottle"
+	"github.com/3JoB/tunadb"
 )
 
 func init() {
-	// bottle.Open(bottle.DefaultOption)
+	// tunadb.Open(tunadb.DefaultOption)
 	//
-	// option := bottle.Option{
+	// option := tunadb.Option{
 	//	Directory:       "./data",
 	//	Enable:          true,
-	//	Secret:          bottle.Secret,
+	//	Secret:          tunadb.Secret,
 	//	DataFileMaxSize: 1048576,
 	// }
 
-	bottle.Load("./config.yaml")
+	tunadb.Load("./config.yaml")
 
-	bottle.SetIndexSize(1000)
+	tunadb.SetIndexSize(1000)
 }
 
 type UserInfo struct {
@@ -36,19 +36,19 @@ type UserInfo struct {
 
 func main() {
 	// PUT Data
-	bottle.Put([]byte("foo"), []byte("66.6"))
+	tunadb.Put([]byte("foo"), []byte("66.6"))
 
 	// 如果转成string那么就是字符串
-	fmt.Println(bottle.Get([]byte("foo")).String())
+	fmt.Println(tunadb.Get([]byte("foo")).String())
 
 	// 如果不存在默认值就是0
-	fmt.Println(bottle.Get([]byte("foo")).Int())
+	fmt.Println(tunadb.Get([]byte("foo")).Int())
 
 	// 如果不成功就是false
-	fmt.Println(bottle.Get([]byte("foo")).Bool())
+	fmt.Println(tunadb.Get([]byte("foo")).Bool())
 
 	// 如果不成功就是0.0
-	fmt.Println(bottle.Get([]byte("foo")).Float())
+	fmt.Println(tunadb.Get([]byte("foo")).Float())
 
 	user := UserInfo{
 		Name:  "Leon Ding",
@@ -57,14 +57,14 @@ func main() {
 	}
 
 	// 通过Bson保存数据对象,并且设置超时时间为5秒
-	bottle.Put([]byte("user"), bottle.Bson(&user), bottle.TTL(5))
+	tunadb.Put([]byte("user"), tunadb.Bson(&user), tunadb.TTL(5))
 
 	var u UserInfo
 
 	// 通过Unwrap解析出结构体
-	bottle.Get([]byte("user")).Unwrap(&u)
+	tunadb.Get([]byte("user")).Unwrap(&u)
 
-	data := bottle.Get([]byte("user"))
+	data := tunadb.Get([]byte("user"))
 
 	if data.IsError() {
 		fmt.Println(data.Err)
@@ -75,7 +75,7 @@ func main() {
 	// 打印取值
 	fmt.Println(u)
 
-	if err := bottle.Close(); err != nil {
+	if err := tunadb.Close(); err != nil {
 		fmt.Println(err)
 	}
 }

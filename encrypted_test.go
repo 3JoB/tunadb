@@ -2,7 +2,7 @@
 // Author: Leon Ding <ding@ibyte.me>
 // Date: 2022/3/4 - 2:56 PM - UTC/GMT+08:00
 
-package bottle
+package tunadb
 
 import (
 	"os"
