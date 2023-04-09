@@ -6,9 +6,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/auula/bottle"
 	"strconv"
 	"sync"
+
+	"github.com/auula/bottle"
 )
 
 func init() {
@@ -19,7 +20,6 @@ func init() {
 }
 
 func main() {
-
 	defer bottle.Close()
 
 	wg := new(sync.WaitGroup)

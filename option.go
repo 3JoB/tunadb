@@ -55,7 +55,6 @@ func (o *Option) Validation() {
 	dataDirectory = fmt.Sprintf("%sdata/", Root)
 
 	indexDirectory = fmt.Sprintf("%sindex/", Root)
-
 }
 
 // SetEncryptor Set up a custom encryption implementation

@@ -9,18 +9,19 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/auula/bottle"
 )
 
 func init() {
-	//bottle.Open(bottle.DefaultOption)
+	// bottle.Open(bottle.DefaultOption)
 	//
-	//option := bottle.Option{
+	// option := bottle.Option{
 	//	Directory:       "./data",
 	//	Enable:          true,
 	//	Secret:          bottle.Secret,
 	//	DataFileMaxSize: 1048576,
-	//}
+	// }
 
 	bottle.Load("./config.yaml")
 
@@ -34,7 +35,6 @@ type UserInfo struct {
 }
 
 func main() {
-
 	// PUT Data
 	bottle.Put([]byte("foo"), []byte("66.6"))
 

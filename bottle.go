@@ -9,7 +9,6 @@ import (
 	"fmt"
 	"io"
 	"io/fs"
-	"io/ioutil"
 	"os"
 	"path"
 	"sort"
@@ -23,7 +22,6 @@ import (
 
 // Bottle storage engine components
 var (
-
 	// Root Data storage directory
 	Root = ""
 
@@ -91,7 +89,6 @@ var (
 
 // Higher-order function blocks
 var (
-
 	// Opens a file by specifying a mode
 	openDataFile = func(flag int, dataFileIdentifier int64) (*os.File, error) {
 		return os.OpenFile(dataSuffixFunc(dataFileIdentifier), flag, Perm)
@@ -383,7 +380,6 @@ func saveIndexToFile() (err error) {
 }
 
 func recoverData() error {
-
 	if dataTotalSize() >= totalDataSize {
 		// Trigger merger
 		if err := migrate(); err != nil {
@@ -485,7 +481,7 @@ func migrate() error {
 	}
 
 	// Clear deleted data
-	fileInfos, err := ioutil.ReadDir(dataDirectory)
+	fileInfos, err := os.ReadDir(dataDirectory)
 
 	if err != nil {
 		return err
@@ -508,7 +504,6 @@ func migrate() error {
 }
 
 func buildIndex() error {
-
 	if err := readIndexItem(); err != nil {
 		return err
 	}
@@ -531,13 +526,13 @@ func buildIndex() error {
 
 // Find the latest data files in the index folder
 func findLatestIndexFile() (*os.File, error) {
-	files, err := ioutil.ReadDir(indexDirectory)
+	files, err := os.ReadDir(indexDirectory)
 
 	if err != nil {
 		return nil, err
 	}
 
-	var indexes []fs.FileInfo
+	var indexes []fs.DirEntry
 
 	for _, file := range files {
 		if path.Ext(file.Name()) == indexFileSuffix {
@@ -605,9 +600,9 @@ func findLatestDataFile() (*os.File, error) {
 
 // Load the data file version number
 func version() {
-	files, _ := ioutil.ReadDir(dataDirectory)
+	files, _ := os.ReadDir(dataDirectory)
 
-	var datafiles []fs.FileInfo
+	var datafiles []fs.DirEntry
 
 	for _, file := range files {
 		if path.Ext(file.Name()) == dataFileSuffix {
@@ -631,9 +626,9 @@ func version() {
 
 // Calculate all data file sizes from the data folder
 func dataTotalSize() int64 {
-	files, _ := ioutil.ReadDir(dataDirectory)
+	files, _ := os.ReadDir(dataDirectory)
 
-	var datafiles []fs.FileInfo
+	var datafiles []fs.DirEntry
 
 	for _, file := range files {
 		if path.Ext(file.Name()) == dataFileSuffix {
@@ -644,7 +639,8 @@ func dataTotalSize() int64 {
 	var totalSize int64
 
 	for _, datafile := range datafiles {
-		totalSize += datafile.Size()
+		info, _ := datafile.Info()
+		totalSize += info.Size()
 	}
 
 	return totalSize

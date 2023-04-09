@@ -67,8 +67,8 @@ func binaryEncode(item *Item) []byte {
 	binary.LittleEndian.PutUint32(buf[12:16], item.KeySize)
 	binary.LittleEndian.PutUint32(buf[16:20], item.ValueSize)
 
-	//buf = append(buf, item.Key...)
-	//buf = append(buf, item.Value...)
+	// buf = append(buf, item.Key...)
+	// buf = append(buf, item.Value...)
 
 	// add key data to the buffer
 	copy(buf[itemPadding:itemPadding+item.KeySize], item.Key)

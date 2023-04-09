@@ -24,7 +24,7 @@ func TestOpen(t *testing.T) {
 		{
 			name: "successful",
 			args: args{
-				Option{
+				opt: Option{
 					Directory:       "./testdata",
 					DataFileMaxSize: defaultMaxFileSize,
 				},

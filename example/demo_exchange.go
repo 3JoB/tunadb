@@ -9,6 +9,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/auula/bottle"
 )
 
@@ -19,7 +20,6 @@ func init() {
 	}); err != nil {
 		panic(err)
 	}
-
 }
 
 type UserInfo struct {
@@ -29,14 +29,13 @@ type UserInfo struct {
 }
 
 func main() {
-
-	//for i := 0; i < 1000; i++ {
+	// for i := 0; i < 1000; i++ {
 	//	bottle.Put([]byte("999"), bottle.Bson(&UserInfo{
 	//		Name:  fmt.Sprintf("user-%d", i),
 	//		Age:   22,
 	//		Skill: []string{"Java", "Go", "Rust"},
 	//	}))
-	//}
+	// }
 
 	var u UserInfo
 

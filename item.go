@@ -49,7 +49,7 @@ func (d Data) IsError() bool {
 }
 
 // Unwrap specifies a type pointer to parse data
-func (d *Data) Unwrap(v interface{}) {
+func (d *Data) Unwrap(v any) {
 	if d.Item != nil {
 		_ = bson.Unmarshal(d.Value, v)
 	}
@@ -100,7 +100,7 @@ func (d Data) Bool() bool {
 }
 
 // Bson convert the data to Bson binary
-func Bson(v interface{}) []byte {
+func Bson(v any) []byte {
 	if v == nil {
 		// ??? NIL
 		return []byte{}
