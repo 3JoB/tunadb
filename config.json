@@ -4,6 +4,7 @@
         "dbpath": "/var/classdb/data",
         "file_size_bytes": 1024,
         "io_mode": "mmap",
+        "logging": "/var/log/classdb.log",
         "authentication": "password@123",
         "encoder": {
             "enable": true,
