@@ -4,8 +4,9 @@
         "dbpath": "/var/classdb/data",
         "file_size_bytes": 1024,
         "io_mode": "mmap",
-        "logging": "/var/log/classdb.log",
         "authentication": "password@123",
+        "logging": "/var/log/classdb.log",
+        "url_prefix": "/rpc",
         "encoder": {
             "enable": true,
             "secret": "/etc/classdb/encrypt.wasm"
