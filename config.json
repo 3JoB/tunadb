@@ -1,0 +1,19 @@
+{
+    "classdb": {
+        "port": 2468,
+        "dbpath": "/var/classdb/data",
+        "file_size_bytes": 1024,
+        "io_mode": "mmap",
+        "authentication": "password@123",
+        "encoder": {
+            "enable": true,
+            "secret": "/etc/classdb/encrypt.wasm"
+        },
+        "compresser": {
+            "enable": true,
+            "mode": "hot",
+            "hotspot": 1000,
+            "second": 15000
+        }
+    }
+}
