@@ -13,6 +13,10 @@
 
 ---
 
+> The master branch of this repository has been removed, the latest version is under development and will be synchronized at a later date.
+
+---
+
 [简体中文](#) | [English](#)
 
 ---
